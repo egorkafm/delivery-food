@@ -436,7 +436,7 @@ button {
     background: #ffffff;
     border-radius: 5px;
     margin: auto;
-    padding: 40px 45px;
+    padding: 15px;
 }
 
 .modal-dialog-auth {
@@ -479,8 +479,8 @@ button {
     border: none;
     background-color: transparent;
     position: absolute;
-    top: 10px;
-    right: 20px;
+    top: 1px;
+    right: 10px;
 }
 
 .modal-body {
