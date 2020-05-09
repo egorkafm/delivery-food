@@ -27,6 +27,7 @@ const buttonClearCart = document.querySelector('.clear-cart');
 
 
 let login = localStorage.getItem('gloDelivery');
+// let localString = login || '';
 // console.log(login);
 // console.log(buttonAuth);
 // console.log(modalAuth);
@@ -34,6 +35,18 @@ let login = localStorage.getItem('gloDelivery');
 // console.log(modalAuth.classList.contains('hello'));
 
 const cart = [];
+
+const loadCart = function() {
+  if (localStorage.getItem(login)) {
+    JSON.parse(localStorage.getItem(login)).forEach(function(item) {
+      cart.push(item);
+    });
+  };
+};
+
+const saveCart = () => {
+  localStorage.setItem(login, JSON.stringify(cart));
+};
 
 const valid = function(str) {
   const nameReg = /^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$/;
@@ -87,6 +100,7 @@ function authorized() {
   buttonOut.style.display = 'flex';
   cartButton.style.display = 'flex';
   buttonOut.addEventListener('click', logOut);
+  loadCart();
 };
 
 function notAuthorized() {
@@ -252,6 +266,8 @@ function addToCart(event) {
         });
       };
     };
+
+    saveCart();
 };
 
 function renderCart() {
@@ -296,6 +312,7 @@ function changeCount(event) {
     if (target.classList.contains('counter-plus')) food.count++;  
     renderCart();
   }
+  saveCart();
 };
 
 
